@@ -2,11 +2,11 @@
 
 # Load .env variables
 set -o allexport
-source ./tekton/.env
+source .env
 set +o allexport
 
 # Generate the Tekton DockerHub secret YAML
-cat <<EOF > ./tekton/docker-secret.yaml
+cat <<EOF > ./docker-secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
