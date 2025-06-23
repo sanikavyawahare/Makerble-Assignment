@@ -6,13 +6,13 @@ spec:
   pipelineRef:
     name: budget-app-pipeline
   taskRunTemplate:
-    serviceAccountName: tekton-bot  # 👈 fixed location
+    serviceAccountName: tekton-bot 
   workspaces:
     - name: shared-workspace
       persistentVolumeClaim:
         claimName: kaniko-workspace-pvc
   params:
     - name: repo-url
-      value: https://github.com/KrithikJoshi/makerble-assignment
+      value: https://github.com/sanikavyawahare/Makerble-Assignment.git 
     - name: image-name
-      value: docker.io/krithik2018/budget-app
+      value: docker.io/saniika18/budget-app
