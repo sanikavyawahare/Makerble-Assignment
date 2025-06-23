@@ -1,19 +1,23 @@
 #!/bin/bash
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-source "$SCRIPT_DIR/.env"
+# Load .env variables
+set -o allexport
+source ./tekton/.env
+set +o allexport
 
-cat <<EOF > "$SCRIPT_DIR/dockerhub-secret.yaml"
+# Generate the Tekton DockerHub secret YAML
+cat <<EOF > ./tekton/docker-secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: dockerhub-secret
+  name: docker-secret
+  namespace: default
   annotations:
     tekton.dev/docker-0: https://index.docker.io/v1/
 type: kubernetes.io/basic-auth
 stringData:
-  username: $DOCKERHUB_USERNAME
-  password: $DOCKERHUB_PASSWORD
+  username: $DOCKER_USERNAME
+  password: $DOCKER_PASSWORD
 EOF
 
-echo "✅ Tekton DockerHub secret written to $SCRIPT_DIR/dockerhub-secret.yaml"
+echo "✅ Tekton DockerHub secret written to tekton/docker-secret"

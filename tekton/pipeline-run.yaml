@@ -13,6 +13,6 @@ spec:
         claimName: kaniko-workspace-pvc
   params:
     - name: repo-url
-      value: https://github.com/sanikavyawahare/Makerble-Assignment.git 
+      value: https://github.com/sanikavyawahare/Makerble-Assignment 
     - name: image-name
       value: docker.io/saniika18/budget-app
