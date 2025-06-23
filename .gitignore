@@ -1,0 +1,4 @@
+#ignoring env
+**/.env
+#ignore this file from argo cd
+argo/.env
